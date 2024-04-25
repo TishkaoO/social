@@ -1,0 +1,26 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="0003_ddl_create_posts" author="Kirill K.">
+        <createTable schemaName="social" tableName="posts" remarks="Хранение постов">
+            <column name="post_id_pk" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="post_id_pkey" nullable="false"/>
+            </column>
+            <column name="name" type="varchar" remarks="Имя пользователя"/>
+            <column name="user_fk_id" type="bigint" remarks= "Указывает какому пользьвателю пренадлежит"/>
+            <column name="created_date" type="date" remarks="Дата создания поста"/>
+        </createTable>
+        <addForeignKeyConstraint
+                baseColumnNames="user_fk_id"
+                baseTableName="posts"
+                baseTableSchemaName="social"
+                constraintName="user_fk_id"
+                referencedColumnNames="user_id_pk"
+                referencedTableName="users"
+                referencedTableSchemaName="social"/>
+        <rollback>
+            <dropTable schemaName="social" tableName="posts"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

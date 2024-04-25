@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/0001_create_schema_social.xml
+  - include:
+      file: db/changelog/0002_ddl_create_users.xml
+  - include:
+      file: db/changelog/0003_ddl_create_posts.xml
+  - include:
+      file: db/changelog/0004_ddl_create_comment.xml
+  - include:
+      file: db/changelog/0005_ddl_create_likes.xml
+
+
+

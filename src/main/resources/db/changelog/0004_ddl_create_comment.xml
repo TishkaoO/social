@@ -1,0 +1,26 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="0004_ddl_create_comments" author="Kirill K.">
+        <createTable schemaName="social" tableName="comments" remarks="Хранение комментариев">
+            <column name="comment_id_pk" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName= "comment_id_pkey" nullable="false"/>
+            </column>
+            <column name="name" type="varchar" remarks="Текст комментария"/>
+            <column name="post_id_fk" type="bigint" remarks= "Указывает какому посту пренадлежит"/>
+            <column name="created_date" type="date" remarks= "Дата создания комментария"/>
+        </createTable>
+        <addForeignKeyConstraint
+                baseColumnNames="post_id_fk"
+                baseTableName="comments"
+                baseTableSchemaName="social"
+                constraintName="post_id_fk"
+                referencedColumnNames="post_id_pk"
+                referencedTableName="posts"
+                referencedTableSchemaName="social"/>
+        <rollback>
+            <dropTable schemaName="social" tableName="posts"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>
