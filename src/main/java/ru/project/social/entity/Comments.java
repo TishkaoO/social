@@ -3,6 +3,7 @@ package ru.project.social.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -22,8 +23,8 @@ public class Comments {
 
     private String name;
 
-    @Column(name = "create_date")
-    private Date createDate;
+    @Column(name = "created_date")
+    private LocalDate createDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "posts_id_fk")

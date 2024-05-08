@@ -20,7 +20,7 @@ public class Like {
     @Column(name = "like_id_pk")
     private Long likeId;
 
-    @Column(name = "create_date")
+    @Column(name = "created_date")
     private LocalDate createDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
