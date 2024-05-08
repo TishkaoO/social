@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 @Getter
 @Entity
-@Table(name = "users")
+@Table(schema = "social",name = "users")
 public class User {
 
     @Id
@@ -29,7 +29,7 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "create_date")
+    @Column(name = "created_date")
     private LocalDate createDate;
 
     @OneToMany(mappedBy = "user")

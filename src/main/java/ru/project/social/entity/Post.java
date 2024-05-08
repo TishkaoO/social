@@ -23,11 +23,11 @@ public class Post {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "create_date")
+    @Column(name = "post_created_date")
     private LocalDate createDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id_fk")
+    @JoinColumn(name = "user_fk_id")
     private User user;
 
     @OneToMany(mappedBy = "post")

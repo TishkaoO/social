@@ -17,6 +17,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public Long saveUser(UserDto user) {
         User entity = userMapper.toEntity(user);
-        return userRepository.save(entity).getId();
+        User userEntity = userRepository.save(entity);
+        Long userId = userEntity.getId();
+        return userId;
     }
 }
